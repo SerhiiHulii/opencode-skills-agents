@@ -1,0 +1,23 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "theme": "opencode",
+
+  "scroll_speed": 3,
+  "scroll_acceleration": {
+    "enabled": true
+  },
+  "diff_style": "auto",
+  "keybinds": {
+    // https://opencode.ai/docs/keybinds
+    "leader": "ctrl",
+
+//    "theme_list": "alt+t",
+    "variant_cycle": "alt+a",
+    "model_list": "alt+m",
+//    "agent_list": "ctrl+a",
+    "editor_open": "alt+e",
+    "session_new": "alt+n",
+    "session_list": "alt+l",
+    "command_list": "alt+p"
+  }
+}
