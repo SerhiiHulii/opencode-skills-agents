@@ -1,12 +1,15 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "autoupdate": true,
+  "autoupdate": false,
+//  "autoupdate": true,
   "default_agent": "plan",
 
   // https://opencode.ai/docs/ru/config#models
   "model": "{env:OPENCODE_MODEL}",
   "provider": {
-    "anthropic": {
+    // Zen models pricing https://opencode.ai/docs/zen/
+    "zen": {
+      // List of zen models https://opencode.ai/zen/v1/models
       "models": {},
       "options": {
         "apiKey": "{env:API_KEY_ZEN}"
@@ -14,25 +17,34 @@
     }
   },
 
-  // https://opencode.ai/docs/ru/config#инструменты
+  // https://opencode.ai/docs/ru/tools/#%D0%B2%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9
   "tools": {
     "write": false,
     "bash": false
   },
 
-  // https://opencode.ai/docs/ru/config#сервер
+  // https://opencode.ai/docs/ru/config#%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80
   "server": {
     "port": 9999,
     "hostname": "0.0.0.0",
     "mdns": true,
-    "mdnsDomain": "opencode.local",
-    "cors": ["http://localhost:9999"]
+    "mdnsDomain": "opencode.local"
   },
 
   // https://opencode.ai/docs/ru/config#permission
   "permission": {
+    // bash - Этот инструмент позволяет LLM запускать команды терминала, такие как npm install, git status, ...
+    // edit - Этот инструмент выполняет точное редактирование файлов, заменяя точные совпадения текста.
+    // write - Используйте это, чтобы позволить LLM создавать новые файлы или перезаписывайте существующие.
+    // read - Этот инструмент читает файлы и возвращает их содержимое.
+    // grep - Поиск содержимого файла с помощью регулярных выражений.
+    // glob - Ищите файлы, используя шаблоны glob, например **/*.js или src/**/*.ts.
+    // list - Этот инструмент отображает содержимое каталога.
+    // patch - Этот инструмент применяет файлы исправлений к вашей кодовой базе.
+    // todowrite - Создает и обновляет списки задач для отслеживания прогресса во время сложных операций.
+    // webfetch - Позволяет LLM получать и читать веб-страницы. Полезно для поиска документации или исследований.
+    // question - Этот инструмент позволяет LLM задавать вопросы пользователю во время выполнения задачи.
     "*":"deny",
-
     "read": { "~/projects/*": "allow" },
     "edit": { "~/projects/*": "allow" },
     "list": { "~/projects/*": "allow" },
