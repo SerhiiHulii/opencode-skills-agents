@@ -1,8 +1,18 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "anthropic/claude-sonnet-4-5",
   "autoupdate": true,
   "default_agent": "plan",
+
+  // https://opencode.ai/docs/ru/config#models
+  "model": "{env:OPENCODE_MODEL}",
+  "provider": {
+    "anthropic": {
+      "models": {},
+      "options": {
+        "apiKey": "{env:API_KEY_ZEN}"
+      }
+    }
+  },
 
   // https://opencode.ai/docs/ru/config#инструменты
   "tools": {
@@ -21,8 +31,14 @@
 
   // https://opencode.ai/docs/ru/config#permission
   "permission": {
-    "edit": "ask",
-    "bash": "ask"
+    "*":"deny",
+
+    "read": { "~/projects/*": "allow" },
+    "edit": { "~/projects/*": "allow" },
+    "list": { "~/projects/*": "allow" },
+    "glob": { "~/projects/*": "allow" },
+    "grep": { "~/projects/*": "allow" },
+    "external_directory": { "~/projects/*": "allow" }
   },
 
   // https://opencode.ai/docs/ru/config#watcher
