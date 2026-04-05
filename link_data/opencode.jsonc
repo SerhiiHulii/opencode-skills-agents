@@ -1,8 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "username": "Serhii",
-
-  //  "autoupdate": false,
   "autoupdate": true,
   "default_agent": "plan",
   "agent": {
@@ -42,38 +40,44 @@
     }
   },
 
-  // https://opencode.ai/docs/ru/tools/#%D0%B2%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9
-//  "tools": {
-//    "write": false,
-//    "bash": false
-//  },
-
-  // https://opencode.ai/docs/ru/config#%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80
-//  "server": {
-//    "port": 4096,
-//    "hostname": "0.0.0.0"
-//  },
-
   // https://opencode.ai/docs/ru/config#permission
   "permission": {
-    // bash - Этот инструмент позволяет LLM запускать команды терминала, такие как npm install, git status, ...
-    // edit - Этот инструмент выполняет точное редактирование файлов, заменяя точные совпадения текста.
-    // write - Используйте это, чтобы позволить LLM создавать новые файлы или перезаписывайте существующие.
-    // read - Этот инструмент читает файлы и возвращает их содержимое.
-    // grep - Поиск содержимого файла с помощью регулярных выражений.
-    // glob - Ищите файлы, используя шаблоны glob, например **/*.js или src/**/*.ts.
-    // list - Этот инструмент отображает содержимое каталога.
     // patch - Этот инструмент применяет файлы исправлений к вашей кодовой базе.
     // todowrite - Создает и обновляет списки задач для отслеживания прогресса во время сложных операций.
     // webfetch - Позволяет LLM получать и читать веб-страницы. Полезно для поиска документации или исследований.
     // question - Этот инструмент позволяет LLM задавать вопросы пользователю во время выполнения задачи.
     // "allow" — запуск без одобрения, "ask" — запрос на одобрение, "deny" — заблокировать действие
     "*":"deny",
-    "read": { "~/projects/*": "allow", "~/.config/opencode/*": "allow" },
+
+    // bash - Этот инструмент позволяет LLM запускать команды терминала, такие как npm install, git status, ...
+    "bash": {
+      "~/projects/*": "ask",
+      "~/.config/opencode/*": "ask"
+    },
+    // read - Этот инструмент читает файлы и возвращает их содержимое.
+    "read": {
+      "~/projects/*": "allow",
+      "~/.config/opencode/*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow"
+    },
+
+    // write - Используйте это, чтобы позволить LLM создавать новые файлы или перезаписывайте существующие.
+    "write": { "~/projects/*": "allow", "~/.config/opencode/*": "allow" },
+
+    // edit - Этот инструмент выполняет точное редактирование файлов, заменяя точные совпадения текста.
     "edit": { "~/projects/*": "allow", "~/.config/opencode/*": "allow" },
+
+    // list - Этот инструмент отображает содержимое каталога.
     "list": { "~/projects/*": "allow", "~/.config/opencode/*": "allow" },
+
+    // glob - Ищите файлы, используя шаблоны glob, например **/*.js или src/**/*.ts.
     "glob": { "~/projects/*": "allow", "~/.config/opencode/*": "allow" },
+
+    // grep - Поиск содержимого файла с помощью регулярных выражений.
     "grep": { "~/projects/*": "allow", "~/.config/opencode/*": "allow" },
+
     "external_directory": { "~/projects/*": "allow", "~/.config/opencode/*": "allow" }
   },
 
@@ -83,8 +87,9 @@
   },
 
   // TODO
-  // https://opencode.ai/docs/ru/config#плагины
-//  "plugin": []
+  // https://opencode.ai/docs/ru/config#%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D1%8B
+  // https://opencode.ai/docs/ecosystem#plugins
+  "plugin": ["@mohak34/opencode-notifier@latest"],
 
   // https://opencode.ai/docs/ru/config#enabled_providers
   "enabled_providers": [
