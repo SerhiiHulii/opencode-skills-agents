@@ -1,2 +1,3 @@
 /.idea/
-/link_data/.env
+/link_data/.zsh_env
+/link_data/.envrc
