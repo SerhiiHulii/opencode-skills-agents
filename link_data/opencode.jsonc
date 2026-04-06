@@ -7,20 +7,16 @@
     "build": {
       "mode": "primary",
       "model": "{env:OPENCODE_MODEL}",
-      "tools": {
-        "write": true,
-        "edit": true,
-        "bash": true
-      }
+      "temperature": 0.1,
+      "permission": "ask",
+      "tools": { "write": true, "edit": true, "bash": true }
     },
     "plan": {
       "mode": "primary",
       "model": "{env:OPENCODE_MODEL}",
-      "tools": {
-        "write": false,
-        "edit": false,
-        "bash": false
-      }
+      "temperature": 0.1,
+      "permission": "ask",
+      "tools": { "write": false, "edit": false, "bash": false }
     }
   },
 
@@ -50,10 +46,8 @@
     "*":"deny",
 
     // bash - Этот инструмент позволяет LLM запускать команды терминала, такие как npm install, git status, ...
-    "bash": {
-      "~/projects/*": "ask",
-      "~/.config/opencode/*": "ask"
-    },
+    "bash": { "~/projects/*": "ask", "~/.config/opencode/*": "ask" },
+
     // read - Этот инструмент читает файлы и возвращает их содержимое.
     "read": {
       "~/projects/*": "allow",
@@ -82,23 +76,12 @@
   },
 
   // https://opencode.ai/docs/ru/config#watcher
-  "watcher": {
-    "ignore": ["node_modules/**", "dist/**", ".git/**", ".idea/**"]
-  },
+  "watcher": { "ignore": ["node_modules/**", "dist/**", ".git/**", ".idea/**"] },
 
-  // TODO
   // https://opencode.ai/docs/ru/config#%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D1%8B
   // https://opencode.ai/docs/ecosystem#plugins
   "plugin": ["@mohak34/opencode-notifier@latest"],
 
   // https://opencode.ai/docs/ru/config#enabled_providers
-  "enabled_providers": [
-    "anthropic",
-    "openai",
-    "gemini",
-    "google",
-    "github-copilot",
-    "opencode",
-    "opencode-go"
-  ]
+  "enabled_providers": ["anthropic", "openai", "gemini", "google", "github-copilot", "opencode", "opencode-go"]
 }
