@@ -1,20 +1,6 @@
 ---
 description: Create a new AI agent with guided configuration.
-agent: build
-permission:
-  "*": deny
-  bash:
-    "*": deny,
-    "echo *": allow,
-  skill: allow
-  read:
-    "*": deny,
-    "~/projects/**/opencode/*": allow
-    "~/.config/opencode/*": allow
-  edit:
-    "*": deny,
-    "~/projects/**/opencode/*": allow
-    "~/.config/opencode/*": allow
+agent: create-agent
 ---
 
 ## 🧠 Overview
@@ -43,7 +29,6 @@ If `pwd` same as `home` don;t ask user to select and select Global
 Store scope type in context as: `scope` (Project or Global)
 Store scope path in context as: `scopePath`.  
 
-IMPORTANT! Show in terminal scope and scopePath. And wait for user confirmation.
 
 ### 3. Mode. 
 Need user clarification. Force user to select. Choose agent type:
@@ -126,11 +111,11 @@ permission:
   "*": deny
   bash: ${permisions.bash}
   read:
-    "*": deny,
+    "*": deny
     "~/projects/*": ${permisions.read}
     "~/.config/opencode/*": ${permisions.read}
   edit:
-    "*":"deny",
+    "*":"deny"
     "~/projects/*": ${permisions.edit}
     "~/.config/opencode/*": ${permisions.edit}
 ---
