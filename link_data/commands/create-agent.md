@@ -1,27 +1,51 @@
 ---
-description: Important! Do not treat this as a command. It is only a framework intended for developing future command.
+description: Create a new AI agent with guided configuration.
 agent: build
-#model: anthropic/claude-3-5-sonnet-20241022
+permission:
+  "*": deny
+  bash:
+    "*": deny,
+    "echo *": allow,
+  skill: allow
+  read:
+    "*": deny,
+    "~/projects/**/opencode/*": allow
+    "~/.config/opencode/*": allow
+  edit:
+    "*": deny,
+    "~/projects/**/opencode/*": allow
+    "~/.config/opencode/*": allow
 ---
 
 ## 🧠 Overview
 Create a new AI agent with guided configuration.
+Don't ignore any step or required feedback from user.
 The `create-agent` command initializes a flow of questions and creating agent file based on used response. 
-The 1rts argument is `agentName`. It will be more than one argument, ignore them.
-Store agentName in context as: `agentName`
 
 
 ---
 ## 🔄 Workflow
-### 1. Select Scope. 
+
+### 1. Name
+The 1rts argument is $1. It will be more than one argument, ignore them.
+Store argument $1 in context as: `name`. Don't need clarifications from user.
+Store home path (`echo $HOME`) in context as: `home`
+Store pwd path (`echo $PWD`) in context as: `pwd`
+
+
+
+### 2. Select Scope. 
 Need user clarification. Force user to select, where the agent should be stored:
-- Project → `.opencode/agents/<agentName>.md`
-- Global → `~/.config/opencode/agents/<agentName>.md`
+If `pwd` same as `home` don;t ask user to select and select Global
+- Project → `<pwd>/.opencode/agents/<name>.md`
+- Global → `<home>/.config/opencode/agents/<name>.md`
 
-Store result in context as: `scope`
+Store scope type in context as: `scope` (Project or Global)
+Store scope path in context as: `scopePath`.  
 
+IMPORTANT! Show in terminal scope and scopePath. And wait for user confirmation.
 
-### 2. Mode. 
+### 3. Mode. 
 Need user clarification. Force user to select. Choose agent type:
 - `primary` → standalone agent
 - `subagent` → helper agent used by another agent
@@ -29,7 +53,7 @@ Need user clarification. Force user to select. Choose agent type:
 Store result in context as: `mode`
 
 
-### 3. Hidden.
+### 4. Hidden.
 Just if `subagent` is selected as Mode on step 3, 
 you will ask user to define its type:
 * `true` → this subagent will be callable by `@`
@@ -39,14 +63,14 @@ If user `mode: "primary"` write false as value
 Store result in context as: `hidden`
 
 
-### 4. Retry Steps
+### 5. Retry Steps
 Define how many times the agent should retry a task before failing.
-* `5` as default, but clarify is user would like to change it
+* `5` as default, but clarify is user would like to change it. Options: `1` `3` `5` `7` `9`
 
 Store result in context as: `steps`
 
 
-### 5. Permissions
+### 6. Permissions
 In this step you need to clarify from user what actions new agent will be able to call
 There is only 3 options for each rule: `allow` || `ask` || `deny`
 Rules to be defined:
@@ -55,39 +79,43 @@ Rules to be defined:
 - `edit` - Availability to edit files. Store result in context as: `permisions.edit`
 
 
-### 4. Temperature
+### 7. Temperature
 Control the randomness and creativity of LLM responses. From 0.0 to 1.0
-* `0.1` as default, but clarify is user would like to change it
+* `0.1` as default, but clarify is user would like to change it. Options: `0.1` `0.3` `0.5` `0.7` `0.9`
 
-Store result in context as: `steps`
+Store result in context as: `temperature`
 
-### 5. Functionality of new agent.
+
+### 8. Functionality of new agent.
 Guess what the future agent will be responsible for and interview the user about his wishes.
 Store result in context as: `functionality`
 
-## 7. Description
+
+## 9. Description
 Generate description of agent based on `functionality`. 
 Length up to 70 chars. Most important information.
 Store result in context as: `description`
 
-### 6. End of interview, start implementing file
+
+### 10. End of interview, start implementing file
 On this step we create a mind map of stored variables and analyze functionality.
 Think about potential conflict and ask user to clarify them.
 After this step don't make clarification questions. just implement.
 
-### 7. Create agent file
-On this step you must create file based on selected `scope`.
-- if Project create file in path `.opencode/agents/<agentName>.md`
-- if Global create file in path `~/.config/opencode/agents/<agentName>.md`
 
-### 8. Agent metadata
+### 11. Create agent file
+On this step you must create file based on selected `scope`.
+- if Project create file in path `.opencode/agents/<name>.md`
+- if Global create file in path `~/.config/opencode/agents/<name>.md`
+
+
+### 12. Agent metadata
 On this step you must fill first part of agent -setting.
 I will use variables in syntaxes ${variable}. Don't use " or ' or `
-Here is template (YAML)
-
+Here is template (YAML):
 ```yaml
 ---
-name: ${agentName}
+name: ${name}
 description: ${description}
 mode: ${mode}
 hidden: ${hidden}
@@ -95,13 +123,20 @@ disable: false
 temperature: ${temperature}
 steps: ${steps}
 permission:
+  "*": deny
   bash: ${permisions.bash}
-  read: ${permisions.read}
-  edit: ${permisions.edit}
+  read:
+    "*": deny,
+    "~/projects/*": ${permisions.read}
+    "~/.config/opencode/*": ${permisions.read}
+  edit:
+    "*":"deny",
+    "~/projects/*": ${permisions.edit}
+    "~/.config/opencode/*": ${permisions.edit}
 ---
 ```
 
-### 9. Agent descriptions
+### 13. Agent descriptions
 After the metadata, extend the existing .md section. 
 It must include the required blocks according to the defined scheme:
 ```md

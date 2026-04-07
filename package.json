@@ -5,7 +5,7 @@
   "scripts": {
     "mount": "npm run mount_configs && npm run mount_env",
     "mount_configs": "ln -sfn \"$PWD\"/link_data/* ~/.config/opencode/",
-    "mount_env": "ln -sf \"$PWD\"/link_data/.envrc ~/.zsh_opencode_env || source ~/.zsh_opencode_env"
+    "mount_env": "ln -sf \"$PWD\"/link_data/.envrc ~/.zsh_opencode_env || source ~/.zshrc"
   },
   "author": "",
   "license": "ISC",
