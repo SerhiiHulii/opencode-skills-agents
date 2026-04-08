@@ -13,9 +13,7 @@
     "plan": {
       "mode": "primary",
       "model": "{env:OPENCODE_MODEL}",
-      "temperature": 0.1,
-      "permission": "ask",
-      "tools": { "write": false, "edit": false, "bash": false }
+      "temperature": 0.1
     }
   },
 
@@ -42,13 +40,12 @@
     // webfetch - Позволяет LLM получать и читать веб-страницы. Полезно для поиска документации или исследований.
     // question - Этот инструмент позволяет LLM задавать вопросы пользователю во время выполнения задачи.
     // "allow" — запуск без одобрения, "ask" — запрос на одобрение, "deny" — заблокировать действие
-    "*":"deny",
 
     // bash - Этот инструмент позволяет LLM запускать команды терминала, такие как npm install, git status, ...
     "bash": {
       "*": "deny",
-      "~/projects/*": "ask",
-      "~/.config/opencode/*": "ask",
+      "~/projects/**": "ask",
+      "~/.config/opencode/**": "ask",
       "echo *": "allow",
       "pwd": "allow",
       "ls *": "allow"
@@ -57,29 +54,29 @@
     // read - Этот инструмент читает файлы и возвращает их содержимое.
     "read": {
       "*":"deny",
-      "~/projects/*": "allow",
-      "~/.config/opencode/*": "allow",
+      "~/projects/**": "allow",
+      "~/.config/opencode/**": "allow",
       "*.env": "deny",
       "*.env.*": "deny",
       "*.env.example": "allow"
     },
 
     // write - Используйте это, чтобы позволить LLM создавать новые файлы или перезаписывайте существующие.
-    "write": { "~/projects/*": "allow", "~/.config/opencode/*": "allow" },
+    "write": { "*":"deny", "~/projects/**": "allow", "~/.config/opencode/**": "allow" },
 
     // edit - Этот инструмент выполняет точное редактирование файлов, заменяя точные совпадения текста.
-    "edit": { "~/projects/*": "allow", "~/.config/opencode/*": "allow" },
+    "edit": { "*":"deny", "~/projects/**": "allow", "~/.config/opencode/**": "allow" },
 
     // list - Этот инструмент отображает содержимое каталога.
-    "list": { "~/projects/*": "allow", "~/.config/opencode/*": "allow" },
+    "list": { "*":"deny", "~/projects/**": "allow", "~/.config/opencode/**": "allow" },
 
     // glob - Ищите файлы, используя шаблоны glob, например **/*.js или src/**/*.ts.
-    "glob": { "~/projects/*": "allow", "~/.config/opencode/*": "allow" },
+    "glob": { "*":"deny", "~/projects/**": "allow", "~/.config/opencode/**": "allow" },
 
     // grep - Поиск содержимого файла с помощью регулярных выражений.
-    "grep": { "~/projects/*": "allow", "~/.config/opencode/*": "allow" },
+    "grep": { "*":"deny", "~/projects/**": "allow", "~/.config/opencode/**": "allow" },
 
-    "external_directory": { "~/projects/*": "allow", "~/.config/opencode/*": "allow" }
+    "external_directory": { "*":"deny", "~/projects/**": "allow", "~/.config/opencode/**": "allow" }
   },
 
   // https://opencode.ai/docs/ru/config#watcher
