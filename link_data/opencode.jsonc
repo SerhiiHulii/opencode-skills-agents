@@ -8,9 +8,7 @@
     "build": {
       "mode": "primary",
       "model": "{env:OPENCODE_MODEL}",
-      "temperature": 0.1,
-      "permission": "ask",
-      "tools": { "write": true, "edit": true, "bash": true }
+      "temperature": 0.1
     },
     "plan": {
       "mode": "primary",
@@ -47,7 +45,14 @@
     "*":"deny",
 
     // bash - Этот инструмент позволяет LLM запускать команды терминала, такие как npm install, git status, ...
-    "bash": { "~/projects/*": "ask", "~/.config/opencode/*": "ask" },
+    "bash": {
+      "*": "deny",
+      "~/projects/*": "ask",
+      "~/.config/opencode/*": "ask",
+      "echo *": "allow",
+      "pwd": "allow",
+      "ls *": "allow"
+    },
 
     // read - Этот инструмент читает файлы и возвращает их содержимое.
     "read": {
