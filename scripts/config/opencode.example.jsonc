@@ -22,26 +22,22 @@
   "provider": {
     // Zen models pricing https://opencode.ai/docs/zen/
     // List of providers https://models.dev/
-    // https://models.dev/api.json
+    // List of GO models https://models.dev/api.json
+    // List of ZEN models https://opencode.ai/zen/v1/models
     "opencode": {
-      "name": "Zen",
-//      "whitelist": [
-//        "big-pickle"
-//      ],
-      "models": { "big-pickle": {
-        "name": "BigPickle",
-        "family": "big-pickle"
-
-      } }
+      "whitelist": ["big-pickle"],
+      "models": {
+        "big-pickle": {
+          "id": "",
+          "name": "BigPickle",
+          "family": "big-pickle",
+          "cost": {},
+          "limit": {},
+          "modalities": {}
+        }
+      }
     },
-    "opencode-go": {
-      "name": "Go"
-      // List of zen models https://opencode.ai/zen/v1/models
-//      "whitelist": [
-//        "glm-5"
-//      ]
-//      "models": {"glm-5": { "name": "GLM-5" }}
-    }
+    "opencode-go": { "whitelist": ["glm-5"] }
   },
 
   // https://opencode.ai/docs/ru/config#permission
