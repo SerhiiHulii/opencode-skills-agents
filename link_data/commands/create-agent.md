@@ -180,7 +180,8 @@ permission:
 ### 14. Agent descriptions
 Important! On this step don't need clarifications from user.
 After the metadata, extend the existing .md section.
-It must include the required blocks according to the defined scheme:
+It must include the required blocks according to the defined scheme, 
+but you can fill free to create new blocks if you feel additional abstractions:
 ```md
 # Role
 ${Describe who the agent is, including its purpose, expertise, and general behavior.}

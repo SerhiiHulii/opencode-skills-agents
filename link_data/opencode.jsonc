@@ -4,7 +4,7 @@
   "autoupdate": true,
   "default_agent": "plan",
   "agent": {
-    "example": { "disable": true },
+//    "example": { "disable": true },
     "build": {
       "mode": "primary",
       "model": "{env:OPENCODE_MODEL}",
@@ -22,15 +22,16 @@
   "provider": {
     // Zen models pricing https://opencode.ai/docs/zen/
     // List of providers https://models.dev/
-//    "opencode": {
-//      "models": { "big-pickle": { "name": "BigPickle" } },
-//      "options": { "apiKey": "{env:API_KEY_ZEN}" }
-//    },
-//    "opencode-go": {
-//      // List of zen models https://opencode.ai/zen/v1/models
-//      "models": { "glm-5": { "name": "GLM-5" } },
-//      "options": { "apiKey": "{env:API_KEY_ZEN}" }
-//    }
+    // https://models.dev/api.json
+    "opencode": {
+      "models": { "big-pickle": { "name": "BigPickle" } }
+    },
+    "opencode-go": {
+      // List of zen models https://opencode.ai/zen/v1/models
+      "models": {
+        "glm-5": { "name": "GLM-5" }
+      }
+    }
   },
 
   // https://opencode.ai/docs/ru/config#permission
@@ -84,8 +85,18 @@
 
   // https://opencode.ai/docs/ru/config#%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D1%8B
   // https://opencode.ai/docs/ecosystem#plugins
-  "plugin": ["@mohak34/opencode-notifier@latest"],
+  "plugin": [
+    "@mohak34/opencode-notifier@latest"
+  ],
 
   // https://opencode.ai/docs/ru/config#enabled_providers
-  "enabled_providers": ["anthropic", "openai", "gemini", "google", "github-copilot", "opencode", "opencode-go"]
+  "enabled_providers": [
+//    "anthropic",
+//    "openai",
+//    "gemini",
+//    "google",
+    "github-copilot",
+    "opencode",
+    "opencode-go"
+  ]
 }
