@@ -1,7 +1,7 @@
 {
   "name": "opencode-skills-agents",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "mount": "npm run mount_configs && npm run mount_env",
     "mount_configs": "ln -sfn \"$PWD\"/link_data/* ~/.config/opencode/",
@@ -9,5 +9,8 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "axios": "^1.15.0"
+  }
 }
