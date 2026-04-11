@@ -3,15 +3,21 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "mount": "npm run mount_configs && npm run mount_env",
+    "start": "docker-compose -f docker-compose.yml up -d",
+    "setup": "npm run create_config && npm run mount_configs && npm run mount_env && npm run source",
     "mount_configs": "ln -sfn \"$PWD\"/link_data/* ~/.config/opencode/",
-    "mount_env": "ln -sf \"$PWD\"/link_data/.envrc ~/.zsh_opencode_env || source ~/.zshrc"
+    "mount_env": "ln -sf \"$PWD\"/link_data/.envrc ~/.zsh_opencode_env",
+    "source": "zsh -c 'source ~/.zshrc'",
+    "create_config": "node ./scripts/index.js",
+    "watch": "node ./scripts/watch.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "axios": "^1.15.0",
+    "chokidar": "^5.0.0",
+    "jsonc-parser": "^3.3.1",
     "strip-json-comments": "^5.0.3"
   }
 }

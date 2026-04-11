@@ -11,7 +11,13 @@ function formatValidate(data, customFilters, schemeToReturn, modelsToIgnore) {
                 .filter(([k, _]) => !modelsToIgnore.includes(k))
                 .filter(([, v]) => customFilters.map(callback => callback(v)).every(value => value === true))
                 .sort()
-                .map(([k, v])=> ([k, Object.fromEntries(val.map(j => [j, v[j]]))]))
+                .map(([k, v])=> {
+                    const newVal =  Object.entries(val).map(([k1, v1]) => [k1, typeof v1 ==='string'? v[k1]: v1(v)])
+                    return [
+                        k,
+                        Object.fromEntries(newVal)
+                    ]
+                })
             toReturn[key] = Object.fromEntries(dataEntries)
         }
     })

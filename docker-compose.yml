@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  opencode_config_watcher:
+    container_name: "opencode_config_watcher"
+    image: node:20.19.6
+    restart: always
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "1000:1000"
+    command: "node ./scripts/watch.js"
+
+
+
+
+

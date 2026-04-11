@@ -7,38 +7,36 @@
 //    "example": { "disable": true },
     "build": {
       "mode": "primary",
-      "model": "{env:OPENCODE_MODEL}",
       "temperature": 0.1
     },
     "plan": {
       "mode": "primary",
-      "model": "{env:OPENCODE_MODEL}",
       "temperature": 0.1
     }
   },
 
   // https://opencode.ai/docs/ru/config#models
-  "model": "{env.OPENCODE_MODEL}",
-  "provider": {
-    // Zen models pricing https://opencode.ai/docs/zen/
-    // List of providers https://models.dev/
-    // List of GO models https://models.dev/api.json
-    // List of ZEN models https://opencode.ai/zen/v1/models
-    "opencode": {
-      "whitelist": ["big-pickle"],
-      "models": {
-        "big-pickle": {
-          "id": "",
-          "name": "BigPickle",
-          "family": "big-pickle",
-          "cost": {},
-          "limit": {},
-          "modalities": {}
-        }
-      }
-    },
-    "opencode-go": { "whitelist": ["glm-5"] }
-  },
+//  "model": "{env.OPENCODE_MODEL}",
+//  "provider": {
+//    // Zen models pricing https://opencode.ai/docs/zen/
+//    // List of providers https://models.dev/
+//    // List of GO models https://models.dev/api.json
+//    // List of ZEN models https://opencode.ai/zen/v1/models
+//    "opencode": {
+//      "whitelist": ["big-pickle"],
+//      "models": {
+//        "big-pickle": {
+//          "id": "",
+//          "name": "BigPickle",
+//          "family": "big-pickle",
+//          "cost": {},
+//          "limit": {},
+//          "modalities": {}
+//        }
+//      }
+//    },
+//    "opencode-go": { "whitelist": ["glm-5"] }
+//  },
 
   // https://opencode.ai/docs/ru/config#permission
   "permission": {
