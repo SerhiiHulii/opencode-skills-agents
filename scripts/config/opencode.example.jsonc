@@ -4,7 +4,7 @@
   "autoupdate": true,
   "default_agent": "plan",
   "agent": {
-//    "example": { "disable": true },
+    "example": { "disable": true },
     "build": {
       "mode": "primary",
       "temperature": 0.1

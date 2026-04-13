@@ -4,6 +4,9 @@
   "autoupdate": true,
   "default_agent": "plan",
   "agent": {
+    "example": {
+      "disable": true
+    },
     "build": {
       "mode": "primary",
       "temperature": 0.1
@@ -78,7 +81,7 @@
       "name": "ZEN GO",
       "models": {
         "glm-5": {
-          "name": "CON: 0.205MT | OUT: 0.131MT | GLM-5",
+          "name": "C:0.205M | O:0.131M | GLM-5",
           "id": "glm-5",
           "family": "glm",
           "cost": {
@@ -100,7 +103,7 @@
           }
         },
         "glm-5.1": {
-          "name": "CON: 0.205MT | OUT: 0.131MT | GLM-5.1",
+          "name": "C:0.205M | O:0.131M | GLM-5.1",
           "id": "glm-5.1",
           "family": "glm",
           "cost": {
@@ -122,7 +125,7 @@
           }
         },
         "kimi-k2.5": {
-          "name": "CON: 0.262MT | OUT: 0.066MT | Kimi K2.5",
+          "name": "C:0.262M | O:0.066M | Kimi K2.5",
           "id": "kimi-k2.5",
           "family": "kimi",
           "cost": {
@@ -146,7 +149,7 @@
           }
         },
         "mimo-v2-omni": {
-          "name": "CON: 0.262MT | OUT: 0.064MT | MiMo V2 Omni",
+          "name": "C:0.262M | O:0.064M | MiMo V2 Omni",
           "id": "mimo-v2-omni",
           "family": "mimo-omni",
           "cost": {
@@ -171,7 +174,7 @@
           }
         },
         "mimo-v2-pro": {
-          "name": "CON: 1.049MT | OUT: 0.064MT | MiMo V2 Pro",
+          "name": "C:1.049M | O:0.064M | MiMo V2 Pro",
           "id": "mimo-v2-pro",
           "family": "mimo-pro",
           "cost": {
@@ -198,7 +201,7 @@
           }
         },
         "minimax-m2.5": {
-          "name": "CON: 0.205MT | OUT: 0.131MT | MiniMax M2.5",
+          "name": "C:0.205M | O:0.131M | MiniMax M2.5",
           "id": "minimax-m2.5",
           "family": "minimax-m2.5",
           "cost": {
@@ -220,7 +223,7 @@
           }
         },
         "minimax-m2.7": {
-          "name": "CON: 0.205MT | OUT: 0.131MT | MiniMax M2.7",
+          "name": "C:0.205M | O:0.131M | MiniMax M2.7",
           "id": "minimax-m2.7",
           "family": "minimax-m2.7",
           "cost": {
@@ -257,7 +260,7 @@
       "name": "ZEN",
       "models": {
         "big-pickle": {
-          "name": "CON: 0.200MT | OUT: 0.128MT | Big Pickle",
+          "name": "C:0.200M | O:0.128M | Big Pickle",
           "id": "big-pickle",
           "family": "big-pickle",
           "cost": {
@@ -279,8 +282,65 @@
             ]
           }
         },
+        "gemini-3-flash": {
+          "name": "C:1.049M | O:0.066M | Gemini 3 Flash",
+          "id": "gemini-3-flash",
+          "family": "gemini-flash",
+          "cost": {
+            "input": 0.5,
+            "output": 3,
+            "cache_read": 0.05
+          },
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "video",
+              "audio",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "gemini-3.1-pro": {
+          "name": "C:1.049M | O:0.066M | Gemini 3.1 Pro",
+          "id": "gemini-3.1-pro",
+          "family": "gemini-pro",
+          "cost": {
+            "input": 2,
+            "output": 12,
+            "cache_read": 0.2,
+            "context_over_200k": {
+              "input": 4,
+              "output": 18,
+              "cache_read": 0.4
+            }
+          },
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "video",
+              "audio",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
         "gpt-5-nano": {
-          "name": "CON: 0.400MT | OUT: 0.128MT | GPT-5 Nano",
+          "name": "C:0.400M | O:0.128M | GPT-5 Nano",
           "id": "gpt-5-nano",
           "family": "gpt-nano",
           "cost": {
@@ -304,7 +364,7 @@
           }
         },
         "minimax-m2.5-free": {
-          "name": "CON: 0.205MT | OUT: 0.131MT | MiniMax M2.5 Free",
+          "name": "C:0.205M | O:0.131M | MiniMax M2.5",
           "id": "minimax-m2.5-free",
           "family": "minimax-free",
           "cost": {
@@ -326,7 +386,7 @@
           }
         },
         "nemotron-3-super-free": {
-          "name": "CON: 0.205MT | OUT: 0.128MT | Nemotron 3 Super Free",
+          "name": "C:0.205M | O:0.128M | Nemotron 3",
           "id": "nemotron-3-super-free",
           "family": "nemotron-free",
           "cost": {
@@ -350,11 +410,13 @@
       },
       "whitelist": [
         "big-pickle",
+        "gemini-3-flash",
+        "gemini-3.1-pro",
         "gpt-5-nano",
         "minimax-m2.5-free",
         "nemotron-3-super-free"
       ]
     }
   },
-  "model": "opencode/qwen3.6-plus-free"
+  "model": "opencode/gemini-3.1-pro"
 }

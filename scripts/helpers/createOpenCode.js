@@ -16,4 +16,5 @@ export function createOpenCode(parsedProviders) {
 
     const configFilePath = path.join(__dirname, "../../link_data/opencode.json");
     fs.writeFileSync(configFilePath, JSON.stringify(opencode, null, 2), "utf-8");
+    // fs.writeFileSync(path.join(__dirname, "../../link_data/api.json"), JSON.stringify(parsedProviders, null, 2), "utf-8");
 }

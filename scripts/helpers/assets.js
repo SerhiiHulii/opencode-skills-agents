@@ -16,7 +16,7 @@ export const getModelName = (data, mapOfModelsNames) => {
     try {
         const limitContext = (data?.limit?.context/1000000).toFixed(3)
         const outputContext = (data?.limit?.output/1000000).toFixed(3)
-        return `CON: ${limitContext}MT | OUT: ${outputContext}MT | ${newName}`
+        return `C:${limitContext}M | O:${outputContext}M | ${newName}`
     } catch {
         return newName
     }

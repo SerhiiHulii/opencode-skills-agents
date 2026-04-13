@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "exec": "docker exec -it opencode_config_watcher /bin/bash",
     "start": "docker-compose -f docker-compose.yml up -d",
+    "stop": "docker-compose -f docker-compose.yml stop && docker ps",
+
     "setup": "npm run create_config && npm run mount_configs && npm run mount_env && npm run source",
     "mount_configs": "ln -sfn \"$PWD\"/link_data/* ~/.config/opencode/",
     "mount_env": "ln -sf \"$PWD\"/link_data/.envrc ~/.zsh_opencode_env",
