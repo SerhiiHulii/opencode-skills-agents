@@ -8,8 +8,6 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
-    ports:
-      - "1000:1000"
     command: "node ./scripts/watch.js"
 
 
