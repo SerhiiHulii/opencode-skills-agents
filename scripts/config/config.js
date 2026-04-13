@@ -34,18 +34,18 @@ export const OPENCODE_MODEL = [
     // List of providers https://models.dev/
     // Zen models pricing https://opencode.ai/docs/zen/
 
-    "opencode/qwen3.6-plus-free",
+    // "opencode/qwen3.6-plus-free",
     // "opencode/big-pickle",
     // "opencode/minimax-m2.5",
 
-    // "opencode/gemini-3-flash",
-    // "opencode/gemini-3.1-pro",
-    // "opencode/glm-5",
-    // "opencode/minimax-m2.7",
-    // "opencode/minimax-m2.5",
-    // "opencode/kimi-k2.5",
-    // "opencode/mimo-v2-pro",
-    // "opencode/mimo-v2-omni",
+    // "opencode-go/gemini-3-flash",
+    // "opencode-go/gemini-3.1-pro",
+    // "opencode-go/glm-5",
+    // "opencode-go/minimax-m2.7",
+    "opencode-go/minimax-m2.5",
+    // "opencode-go/kimi-k2.5",
+    // "opencode-go/mimo-v2-pro",
+    // "opencode-go/mimo-v2-omni",
 ][0]
 
 export const schemeToReturn = {

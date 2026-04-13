@@ -2,7 +2,6 @@
   "$schema": "https://opencode.ai/config.json",
   "username": "Serhii",
   "autoupdate": true,
-  "default_agent": "plan",
   "agent": {
     "example": {
       "disable": true
@@ -421,5 +420,5 @@
       ]
     }
   },
-  "model": "opencode/qwen3.6-plus-free"
+  "model": "opencode-go/minimax-m2.5"
 }

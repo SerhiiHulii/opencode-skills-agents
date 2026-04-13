@@ -2,7 +2,6 @@
   "$schema": "https://opencode.ai/config.json",
   "username": "Serhii",
   "autoupdate": true,
-  "default_agent": "plan",
   "agent": {
     "example": { "disable": true },
     "build": {
@@ -53,7 +52,10 @@
       "~/.config/opencode/**": "ask",
       "echo *": "allow",
       "pwd": "allow",
-      "ls *": "allow"
+      "ls *": "allow",
+      "git status *": "allow",
+      "git add *": "allow",
+      "git commit *": "allow"
     },
 
     // read - Этот инструмент читает файлы и возвращает их содержимое.
