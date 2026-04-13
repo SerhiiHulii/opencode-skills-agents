@@ -34,12 +34,12 @@ export const OPENCODE_MODEL = [
     // List of providers https://models.dev/
     // Zen models pricing https://opencode.ai/docs/zen/
 
-    // "opencode/qwen3.6-plus-free",
+    "opencode/qwen3.6-plus-free",
     // "opencode/big-pickle",
     // "opencode/minimax-m2.5",
 
     // "opencode/gemini-3-flash",
-    "opencode/gemini-3.1-pro",
+    // "opencode/gemini-3.1-pro",
     // "opencode/glm-5",
     // "opencode/minimax-m2.7",
     // "opencode/minimax-m2.5",
