@@ -55,7 +55,12 @@
       "ls *": "allow",
       "git status *": "allow",
       "git add *": "allow",
-      "git commit *": "allow"
+      "git commit *": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "git fetch*": "allow",
+      "git status*": "allow",
+      "npm run *": "allow"
     },
 
     // read - Этот инструмент читает файлы и возвращает их содержимое.
