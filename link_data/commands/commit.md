@@ -20,11 +20,3 @@ Don't need to clarify anything from user. Just go through steps.
 ```bash
 git add . && git commit -m "<FILL_IN_ACCORDINGLY>"
 ```
-
-4. On this step you must ask user to push changes on server or not. Two options:
-- Push change to server (default)
-- Don't push changes.
-If user select to push changes you must execute CLI command:
-```bash
-git push
-```
