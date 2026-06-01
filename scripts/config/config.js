@@ -43,6 +43,7 @@ export const OPENCODE_MODEL = [
     // "opencode-go/glm-5",
     // "opencode-go/minimax-m2.7",
     "opencode-go/minimax-m2.5",
+
     // "opencode-go/kimi-k2.5",
     // "opencode-go/mimo-v2-pro",
     // "opencode-go/mimo-v2-omni",
