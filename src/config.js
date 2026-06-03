@@ -18,7 +18,7 @@ export const allowedProviders = {
     "opencode": [ // Free of API usage
         deprecated(),
         reasoning(),
-        minContext(500000),
+        minContext(200000),
         isFree(),
         (v) =>  v.family.includes('gemini') || v.cost.input === 0 && v.cost.output === 0
     ],

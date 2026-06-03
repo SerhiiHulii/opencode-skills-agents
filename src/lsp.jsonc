@@ -1,11 +1,11 @@
 {
   // https://opencode.ai/docs/ru/lsp/
-  //  "lsp": {
-  //    "bash": {
-  //      "disabled": false,
-  //      "command": [
-  //
-  //      ]
-  //    }
-  //  },
+    "lsp": {
+      "bash": {
+        "disabled": false,
+        "command": [
+
+        ]
+      }
+    }
 }
