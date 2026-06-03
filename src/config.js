@@ -1,4 +1,4 @@
-import {deprecated, reasoning, minContext, isFree, getProviderName, getModelName} from '../src/helpers/assets.js';
+import {deprecated, reasoning, minContext, isFree, getProviderName, getModelName} from '../scripts/helpers/assets.js';
 
 // Custom Providers names
 const mapOfProvidersNames = {
@@ -18,14 +18,14 @@ export const allowedProviders = {
     "opencode": [ // Free of API usage
         deprecated(),
         reasoning(),
-        minContext(200000),
-        // isFree(),
+        minContext(500000),
+        isFree(),
         (v) =>  v.family.includes('gemini') || v.cost.input === 0 && v.cost.output === 0
     ],
     "opencode-go": [ // Subscription
         deprecated(),
         reasoning(),
-        minContext(200000)
+        minContext(500000)
     ],
 };
 
@@ -42,7 +42,8 @@ export const OPENCODE_MODEL = [
     // "opencode-go/gemini-3.1-pro",
     // "opencode-go/glm-5",
     // "opencode-go/minimax-m2.7",
-    "opencode-go/minimax-m2.5",
+    // "opencode-go/minimax-m2.5",
+    "opencode-go/deepseek-v4-flash",
 
     // "opencode-go/kimi-k2.5",
     // "opencode-go/mimo-v2-pro",

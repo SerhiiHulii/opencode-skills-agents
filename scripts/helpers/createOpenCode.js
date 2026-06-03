@@ -3,18 +3,16 @@ import path from "path";
 import { fileURLToPath } from "url";
 import stripJsonComments from "strip-json-comments";
 
-import {OPENCODE_MODEL} from "../../config/config.js";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import {OPENCODE_MODEL} from "../../src/config.js";
+import {writeJson} from "./writeJson.js";
 
 export function createOpenCode(parsedProviders) {
-    const exampleFilePath = path.join(__dirname, "../config/opencode.example.jsonc");
+    const exampleFilePath = path.join(path.dirname(fileURLToPath(import.meta.url)), "../../src/opencode.jsonc");
     const raw = fs.readFileSync(exampleFilePath, "utf-8");
+    console.log(raw)
     const opencode = JSON.parse(stripJsonComments(raw));
     opencode.provider = parsedProviders
     opencode.model = OPENCODE_MODEL
 
-    const configFilePath = path.join(__dirname, "../../dist/opencode.json");
-    fs.writeFileSync(configFilePath, JSON.stringify(opencode, null, 2), "utf-8");
-    // fs.writeFileSync(path.join(__dirname, "../../dist/api.json"), JSON.stringify(parsedProviders, null, 2), "utf-8");
+    writeJson("dist/opencode.json", opencode)
 }

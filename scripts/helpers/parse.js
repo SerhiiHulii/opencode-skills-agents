@@ -1,4 +1,7 @@
-function formatValidate(data, customFilters, schemeToReturn, modelsToIgnore) {
+import {allowedProviders, modelsToIgnore, schemeToReturn} from "../../src/config.js";
+import {fetchOC} from "./fetchOC.js";
+
+export function formatValidate(data, customFilters, schemeToReturn, modelsToIgnore) {
     const toReturn = {}
 
     Object.entries(schemeToReturn).forEach(([key, val]) => {
@@ -28,9 +31,10 @@ function formatValidate(data, customFilters, schemeToReturn, modelsToIgnore) {
 }
 
 
-export function parse(data, allowedProviders, schemeToReturn, modelsToIgnore) {
+export async function parse() {
+    const providers = await fetchOC();
     return Object.fromEntries(
-        Object.entries(data)
+        Object.entries(providers)
             .filter(([k, _]) => Object.keys(allowedProviders).includes(k))
             .map(([k, v]) => ([k, formatValidate(v, allowedProviders[k], schemeToReturn, modelsToIgnore)]))
             .filter(([_, v]) => (Object.entries(v.models).length > 0))

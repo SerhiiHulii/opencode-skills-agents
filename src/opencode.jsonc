@@ -1,5 +1,5 @@
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://opencode.ai/config.jso123n",
   "username": "Serhii",
   "autoupdate": true,
   "agent": {
@@ -13,30 +13,8 @@
       "temperature": 0.1
     }
   },
-  "mcp": {
-    "context7": {
-      "type": "remote",
-      "url": "https://mcp.context7.com/mcp",
-      "headers": {
-        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
-      },
-      "enabled": true
-    },
-    "gh_grep": {
-      "type": "remote",
-      "url": "https://mcp.grep.app"
-    }
-  },
 
-  // https://opencode.ai/docs/ru/lsp/
-//  "lsp": {
-//    "bash": {
-//      "disabled": false,
-//      "command": [
-//
-//      ]
-//    }
-//  },
+
 
   // https://opencode.ai/docs/ru/config#models
 //  "model": "{env.OPENCODE_MODEL}",
@@ -60,60 +38,6 @@
 //    },
 //    "opencode-go": { "whitelist": ["glm-5"] }
 //  },
-
-  // https://opencode.ai/docs/ru/config#permission
-  "permission": {
-    // patch - Этот инструмент применяет файлы исправлений к вашей кодовой базе.
-    // todowrite - Создает и обновляет списки задач для отслеживания прогресса во время сложных операций.
-    // webfetch - Позволяет LLM получать и читать веб-страницы. Полезно для поиска документации или исследований.
-    // question - Этот инструмент позволяет LLM задавать вопросы пользователю во время выполнения задачи.
-    // "allow" — запуск без одобрения, "ask" — запрос на одобрение, "deny" — заблокировать действие
-
-    // bash - Этот инструмент позволяет LLM запускать команды терминала, такие как npm install, git status, ...
-    "bash": {
-      "*": "deny",
-      "~/projects/**": "ask",
-      "~/.config/opencode/**": "ask",
-      "echo *": "allow",
-      "pwd": "allow",
-      "ls *": "allow",
-      "git status *": "allow",
-      "git add *": "allow",
-      "git commit *": "allow",
-      "git diff*": "allow",
-      "git log*": "allow",
-      "git fetch*": "allow",
-      "git status*": "allow",
-      "npm run *": "allow"
-    },
-
-    // read - Этот инструмент читает файлы и возвращает их содержимое.
-    "read": {
-      "*":"deny",
-      "~/projects/**": "allow",
-      "~/.config/opencode/**": "allow",
-      "*.env": "deny",
-      "*.env.*": "deny",
-      "*.env.example": "allow"
-    },
-
-    // write - Используйте это, чтобы позволить LLM создавать новые файлы или перезаписывайте существующие.
-    "write": { "*":"deny", "~/projects/**": "allow", "~/.config/opencode/**": "allow" },
-
-    // edit - Этот инструмент выполняет точное редактирование файлов, заменяя точные совпадения текста.
-    "edit": { "*":"deny", "~/projects/**": "allow", "~/.config/opencode/**": "allow" },
-
-    // list - Этот инструмент отображает содержимое каталога.
-    "list": { "*":"deny", "~/projects/**": "allow", "~/.config/opencode/**": "allow" },
-
-    // glob - Ищите файлы, используя шаблоны glob, например **/*.js или scripts/**/*.ts.
-    "glob": { "*":"deny", "~/projects/**": "allow", "~/.config/opencode/**": "allow" },
-
-    // grep - Поиск содержимого файла с помощью регулярных выражений.
-    "grep": { "*":"deny", "~/projects/**": "allow", "~/.config/opencode/**": "allow" },
-
-    "external_directory": { "*":"deny", "~/projects/**": "allow", "~/.config/opencode/**": "allow" }
-  },
 
   // https://opencode.ai/docs/ru/config#watcher
   "watcher": { "ignore": ["node_modules/**", "dist/**", ".git/**", ".idea/**"] },
