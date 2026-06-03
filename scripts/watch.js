@@ -6,8 +6,8 @@ import path from "path";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const WATCH_PATH = [
-    path.join(__dirname, './config/config.js'),
-    path.join(__dirname, './config/opencode.example.jsonc'),
+    path.join(__dirname, '../src/config.js'),
+    path.join(__dirname, '../src/opencode.example.jsonc'),
 ];
 
 const NPM_COMMAND = ['run', 'setup'];

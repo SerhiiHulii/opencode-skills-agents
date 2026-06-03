@@ -1,4 +1,4 @@
-import {deprecated, reasoning, minContext, isFree, getProviderName, getModelName} from '../helpers/assets.js';
+import {deprecated, reasoning, minContext, isFree, getProviderName, getModelName} from '../src/helpers/assets.js';
 
 // Custom Providers names
 const mapOfProvidersNames = {

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://opencode.ai/config.json11",
   "username": "Serhii",
   "autoupdate": true,
   "agent": {
@@ -101,8 +101,52 @@
       "id": "opencode-go",
       "name": "ZEN GO",
       "models": {
+        "deepseek-v4-flash": {
+          "name": "C:1.000M | O:0.384M | DeepSeek V4 Flash",
+          "id": "deepseek-v4-flash",
+          "family": "deepseek-flash",
+          "cost": {
+            "input": 0.14,
+            "output": 0.28,
+            "cache_read": 0.0028
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 384000
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "deepseek-v4-pro": {
+          "name": "C:1.000M | O:0.384M | DeepSeek V4 Pro",
+          "id": "deepseek-v4-pro",
+          "family": "deepseek-thinking",
+          "cost": {
+            "input": 1.74,
+            "output": 3.48,
+            "cache_read": 0.0145
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 384000
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
         "glm-5": {
-          "name": "C:0.205M | O:0.131M | GLM-5",
+          "name": "C:0.203M | O:0.033M | GLM-5",
           "id": "glm-5",
           "family": "glm",
           "cost": {
@@ -111,8 +155,8 @@
             "cache_read": 0.2
           },
           "limit": {
-            "context": 204800,
-            "output": 131072
+            "context": 202752,
+            "output": 32768
           },
           "modalities": {
             "input": [
@@ -124,7 +168,7 @@
           }
         },
         "glm-5.1": {
-          "name": "C:0.205M | O:0.131M | GLM-5.1",
+          "name": "C:0.203M | O:0.033M | GLM-5.1",
           "id": "glm-5.1",
           "family": "glm",
           "cost": {
@@ -133,8 +177,8 @@
             "cache_read": 0.26
           },
           "limit": {
-            "context": 204800,
-            "output": 131072
+            "context": 202752,
+            "output": 32768
           },
           "modalities": {
             "input": [
@@ -148,7 +192,7 @@
         "kimi-k2.5": {
           "name": "C:0.262M | O:0.066M | Kimi K2.5",
           "id": "kimi-k2.5",
-          "family": "kimi",
+          "family": "kimi-k2.5",
           "cost": {
             "input": 0.6,
             "output": 3,
@@ -169,48 +213,67 @@
             ]
           }
         },
-        "mimo-v2-omni": {
-          "name": "C:0.262M | O:0.064M | MiMo V2 Omni",
-          "id": "mimo-v2-omni",
-          "family": "mimo-omni",
+        "kimi-k2.6": {
+          "name": "C:0.262M | O:0.066M | Kimi K2.6",
+          "id": "kimi-k2.6",
+          "family": "kimi-k2.6",
           "cost": {
-            "input": 0.4,
-            "output": 2,
-            "cache_read": 0.08
+            "input": 0.95,
+            "output": 4,
+            "cache_read": 0.16
           },
           "limit": {
             "context": 262144,
-            "output": 64000
+            "output": 65536
           },
           "modalities": {
             "input": [
               "text",
               "image",
-              "audio",
-              "pdf"
+              "video"
             ],
             "output": [
               "text"
             ]
           }
         },
-        "mimo-v2-pro": {
-          "name": "C:1.049M | O:0.064M | MiMo V2 Pro",
-          "id": "mimo-v2-pro",
-          "family": "mimo-pro",
+        "mimo-v2.5": {
+          "name": "C:1.000M | O:0.128M | MiMo V2.5",
+          "id": "mimo-v2.5",
+          "family": "mimo-v2.5",
           "cost": {
-            "input": 1,
-            "output": 3,
-            "cache_read": 0.2,
-            "context_over_200k": {
-              "input": 2,
-              "output": 6,
-              "cache_read": 0.4
-            }
+            "input": 0.14,
+            "output": 0.28,
+            "cache_read": 0.0028
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "mimo-v2.5-pro": {
+          "name": "C:1.049M | O:0.128M | MiMo V2.5 Pro",
+          "id": "mimo-v2.5-pro",
+          "family": "mimo-v2.5-pro",
+          "cost": {
+            "input": 1.74,
+            "output": 3.48,
+            "cache_read": 0.0145
           },
           "limit": {
             "context": 1048576,
-            "output": 64000
+            "output": 128000
           },
           "modalities": {
             "input": [
@@ -222,7 +285,7 @@
           }
         },
         "minimax-m2.5": {
-          "name": "C:0.205M | O:0.131M | MiniMax M2.5",
+          "name": "C:0.205M | O:0.066M | MiniMax M2.5",
           "id": "minimax-m2.5",
           "family": "minimax-m2.5",
           "cost": {
@@ -232,7 +295,7 @@
           },
           "limit": {
             "context": 204800,
-            "output": 131072
+            "output": 65536
           },
           "modalities": {
             "input": [
@@ -264,16 +327,94 @@
               "text"
             ]
           }
+        },
+        "minimax-m3": {
+          "name": "C:0.512M | O:0.131M | MiniMax M3",
+          "id": "minimax-m3",
+          "family": "minimax-m3",
+          "cost": {
+            "input": 0.6,
+            "output": 2.4,
+            "cache_read": 0.12
+          },
+          "limit": {
+            "context": 512000,
+            "output": 131072
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "qwen3.6-plus": {
+          "name": "C:0.262M | O:0.066M | Qwen3.6 Plus",
+          "id": "qwen3.6-plus",
+          "family": "qwen3.6",
+          "cost": {
+            "input": 0.5,
+            "output": 3,
+            "cache_read": 0.05,
+            "cache_write": 0.625
+          },
+          "limit": {
+            "context": 262144,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "qwen3.7-max": {
+          "name": "C:1.000M | O:0.066M | Qwen3.7 Max",
+          "id": "qwen3.7-max",
+          "family": "qwen3.7-max",
+          "cost": {
+            "input": 2.5,
+            "output": 7.5,
+            "cache_read": 0.5,
+            "cache_write": 3.125
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
         }
       },
       "whitelist": [
+        "deepseek-v4-flash",
+        "deepseek-v4-pro",
         "glm-5",
         "glm-5.1",
         "kimi-k2.5",
-        "mimo-v2-omni",
-        "mimo-v2-pro",
+        "kimi-k2.6",
+        "mimo-v2.5",
+        "mimo-v2.5-pro",
         "minimax-m2.5",
-        "minimax-m2.7"
+        "minimax-m2.7",
+        "minimax-m3",
+        "qwen3.6-plus",
+        "qwen3.7-max"
       ]
     },
     "opencode": {
@@ -281,7 +422,7 @@
       "name": "ZEN",
       "models": {
         "big-pickle": {
-          "name": "C:0.200M | O:0.128M | Big Pickle",
+          "name": "C:0.200M | O:0.032M | Big Pickle",
           "id": "big-pickle",
           "family": "big-pickle",
           "cost": {
@@ -289,6 +430,29 @@
             "output": 0,
             "cache_read": 0,
             "cache_write": 0
+          },
+          "limit": {
+            "context": 200000,
+            "input": 160000,
+            "output": 32000
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "deepseek-v4-flash-free": {
+          "name": "C:0.200M | O:0.128M | DeepSeek V4 Flash Free",
+          "id": "deepseek-v4-flash-free",
+          "family": "deepseek-flash-free",
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cache_read": 0
           },
           "limit": {
             "context": 200000,
@@ -337,6 +501,17 @@
             "input": 2,
             "output": 12,
             "cache_read": 0.2,
+            "tiers": [
+              {
+                "input": 4,
+                "output": 18,
+                "cache_read": 0.4,
+                "tier": {
+                  "type": "context",
+                  "size": 200000
+                }
+              }
+            ],
             "context_over_200k": {
               "input": 4,
               "output": 18,
@@ -360,46 +535,76 @@
             ]
           }
         },
-        "gpt-5-nano": {
-          "name": "C:0.400M | O:0.128M | GPT-5 Nano",
-          "id": "gpt-5-nano",
-          "family": "gpt-nano",
+        "gemini-3.5-flash": {
+          "name": "C:1.049M | O:0.066M | Gemini 3.5 Flash",
+          "id": "gemini-3.5-flash",
+          "family": "gemini-flash",
           "cost": {
-            "input": 0,
-            "output": 0,
-            "cache_read": 0
+            "input": 1.5,
+            "output": 9,
+            "cache_read": 0.15,
+            "input_audio": 1.5
           },
           "limit": {
-            "context": 400000,
-            "input": 272000,
-            "output": 128000
+            "context": 1048576,
+            "output": 65536
           },
           "modalities": {
             "input": [
               "text",
-              "image"
+              "image",
+              "video",
+              "audio",
+              "pdf"
             ],
             "output": [
               "text"
             ]
           }
         },
-        "minimax-m2.5-free": {
-          "name": "C:0.205M | O:0.131M | MiniMax M2.5",
-          "id": "minimax-m2.5-free",
-          "family": "minimax-free",
+        "mimo-v2.5-free": {
+          "name": "C:0.200M | O:0.032M | MiMo V2.5 Free",
+          "id": "mimo-v2.5-free",
+          "family": "mimo-v2.5-free",
           "cost": {
             "input": 0,
             "output": 0,
             "cache_read": 0
           },
           "limit": {
-            "context": 204800,
-            "output": 131072
+            "context": 200000,
+            "output": 32000
           },
           "modalities": {
             "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
               "text"
+            ]
+          }
+        },
+        "minimax-m3-free": {
+          "name": "C:0.200M | O:0.032M | MiniMax M3 Free",
+          "id": "minimax-m3-free",
+          "family": "minimax-m3-free",
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cache_read": 0
+          },
+          "limit": {
+            "context": 200000,
+            "output": 32000
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "video"
             ],
             "output": [
               "text"
@@ -431,10 +636,12 @@
       },
       "whitelist": [
         "big-pickle",
+        "deepseek-v4-flash-free",
         "gemini-3-flash",
         "gemini-3.1-pro",
-        "gpt-5-nano",
-        "minimax-m2.5-free",
+        "gemini-3.5-flash",
+        "mimo-v2.5-free",
+        "minimax-m3-free",
         "nemotron-3-super-free"
       ]
     }
