@@ -11,7 +11,7 @@
     "start": "docker-compose -f docker-compose.yml up -d",
     "stop": "docker-compose -f docker-compose.yml stop && docker ps",
 
-    "watch": "node ./scripts/watch.js"
+    "watch": "npm run setup && node ./scripts/watch.js"
   },
   "author": "",
   "license": "ISC",

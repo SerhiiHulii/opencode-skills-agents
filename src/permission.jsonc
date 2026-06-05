@@ -22,7 +22,8 @@
       "git log*": "allow",
       "git fetch*": "allow",
       "git status*": "allow",
-      "npm run *": "allow"
+      "npm run *": "allow",
+      "grep *": "allow"
     },
 
     // read - Этот инструмент читает файлы и возвращает их содержимое.
