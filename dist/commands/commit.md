@@ -6,11 +6,14 @@ subtask: true
 
 Use Build agent!
 Stage all changed files and create a commit using the specified commands and rules.
-Don't need to clarify anything from user. Just go through steps.
+Don't need to clarify anything from user!!!. Just go through steps.
+I repeat. DON'T need to clarify from user. Just do what is described in this file.
+User will be not able to respond, and your clarification will not bring value and will break expected functionality.
 
 ### Limitation:
 - You don't validate written code
 - You just go through steps, no improvisation
+- You don't clarify user response. 
 
 **Steps to**
 1. Add all changed and new files to staging.

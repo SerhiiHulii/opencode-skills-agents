@@ -130,17 +130,60 @@
           }
         },
         "minimax-m3": {
-          "name": "Con:0.512M | Out:0.131M | MiniMax M3",
+          "name": "Con:0.512M | Out:0.131M | MiniMax M3 (3x usage)",
           "id": "minimax-m3",
           "family": "minimax-m3",
           "cost": {
-            "input": 0.6,
-            "output": 2.4,
-            "cache_read": 0.12
+            "input": 0.1,
+            "output": 0.4,
+            "cache_read": 0.02
           },
           "limit": {
             "context": 512000,
             "output": 131072
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "qwen3.6-plus": {
+          "name": "Con:1.000M | Out:0.066M | Qwen3.6 Plus",
+          "id": "qwen3.6-plus",
+          "family": "qwen3.6",
+          "cost": {
+            "input": 0.5,
+            "output": 3,
+            "cache_read": 0.05,
+            "cache_write": 0.625,
+            "tiers": [
+              {
+                "input": 2,
+                "output": 6,
+                "cache_read": 0.2,
+                "cache_write": 2.5,
+                "tier": {
+                  "type": "context",
+                  "size": 256000
+                }
+              }
+            ],
+            "context_over_200k": {
+              "input": 2,
+              "output": 6,
+              "cache_read": 0.2,
+              "cache_write": 2.5
+            }
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 65536
           },
           "modalities": {
             "input": [
@@ -175,6 +218,49 @@
               "text"
             ]
           }
+        },
+        "qwen3.7-plus": {
+          "name": "Con:1.000M | Out:0.066M | Qwen3.7 Plus",
+          "id": "qwen3.7-plus",
+          "family": "qwen3.7-plus",
+          "cost": {
+            "input": 0.4,
+            "output": 1.6,
+            "cache_read": 0.04,
+            "cache_write": 0.5,
+            "tiers": [
+              {
+                "input": 1.2,
+                "output": 4.8,
+                "cache_read": 0.12,
+                "cache_write": 1.5,
+                "tier": {
+                  "type": "context",
+                  "size": 256000
+                }
+              }
+            ],
+            "context_over_200k": {
+              "input": 1.2,
+              "output": 4.8,
+              "cache_read": 0.12,
+              "cache_write": 1.5
+            }
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
         }
       },
       "whitelist": [
@@ -183,7 +269,9 @@
         "mimo-v2.5",
         "mimo-v2.5-pro",
         "minimax-m3",
-        "qwen3.7-max"
+        "qwen3.6-plus",
+        "qwen3.7-max",
+        "qwen3.7-plus"
       ]
     },
     "opencode": {
@@ -261,30 +349,6 @@
             ]
           }
         },
-        "minimax-m3-free": {
-          "name": "Con:0.200M | Out:0.032M | MiniMax M3 Free",
-          "id": "minimax-m3-free",
-          "family": "minimax-m3-free",
-          "cost": {
-            "input": 0,
-            "output": 0,
-            "cache_read": 0
-          },
-          "limit": {
-            "context": 200000,
-            "output": 32000
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image",
-              "video"
-            ],
-            "output": [
-              "text"
-            ]
-          }
-        },
         "nemotron-3-ultra-free": {
           "name": "Con:1.000M | Out:0.128M | Nemotron 3 Ultra Free",
           "id": "nemotron-3-ultra-free",
@@ -306,14 +370,35 @@
               "text"
             ]
           }
+        },
+        "north-mini-code-free": {
+          "name": "Con:0.256M | Out:0.064M | North Mini Code Free",
+          "id": "north-mini-code-free",
+          "family": "north-free",
+          "cost": {
+            "input": 0,
+            "output": 0
+          },
+          "limit": {
+            "context": 256000,
+            "output": 64000
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
         }
       },
       "whitelist": [
         "big-pickle",
         "deepseek-v4-flash-free",
         "mimo-v2.5-free",
-        "minimax-m3-free",
-        "nemotron-3-ultra-free"
+        "nemotron-3-ultra-free",
+        "north-mini-code-free"
       ]
     }
   },
@@ -362,7 +447,8 @@
       "git fetch*": "allow",
       "git status*": "allow",
       "npm run *": "allow",
-      "grep *": "allow"
+      "grep *": "allow",
+      "cat *": "allow"
     },
     "read": {
       "*": "deny",
