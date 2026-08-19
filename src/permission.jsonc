@@ -24,6 +24,7 @@
       "git status*": "allow",
       "npm run *": "allow",
       "grep *": "allow",
+      "mkdir *": "allow",
       "cat *": "allow"
     },
 
