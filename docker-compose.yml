@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   opencode_config_watcher:
     container_name: "opencode_config_watcher"

@@ -30,7 +30,8 @@
   },
   "plugin": [
     "@mohak34/opencode-notifier@latest",
-    "opencode-browser"
+    "opencode-browser",
+    "oh-my-openagent@latest"
   ],
   "model": "opencode/deepseek-v4-flash-free",
   "provider": {

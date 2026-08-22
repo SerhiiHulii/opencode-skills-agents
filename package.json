@@ -8,8 +8,8 @@
     "mount_configs": "ln -sfn \"$PWD\"/dist/* ~/.settings/.config/opencode/",
 
     "exec": "docker exec -it opencode_config_watcher /bin/bash",
-    "start": "docker-compose -f docker-compose.yml up -d",
-    "stop": "docker-compose -f docker-compose.yml stop && docker ps",
+    "start": "docker compose -f docker-compose.yml up -d",
+    "stop": "docker compose -f docker-compose.yml stop && docker ps",
 
     "watch": "npm run setup && node ./scripts/watch.js"
   },
